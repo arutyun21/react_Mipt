@@ -1,0 +1,66 @@
+.container1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.todoName{
+    padding: 20px;
+    border-radius: 15px;
+    width: 70%;
+    margin: 20px auto;
+    background-color: #686de0;
+    color: white;
+    font-size:40px;
+        
+}
+.task:nth-of-type(odd){
+    background-color: rgb(223, 249, 251, 0.7);
+
+}
+.task:nth-of-type(even){
+    background-color: rgb(255, 190, 118, 0.6);
+}
+.taskList{
+    border: 5px solid rgb(54, 50, 50);
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto;
+
+}
+
+.btn-sort{
+    padding: 20px;
+    display:flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 0 auto;
+    
+}
+
+.btnSortName{
+    background-color: rgb(105, 170, 68);
+    font-size: 16px;
+    padding: 14px 20px;
+    border-radius: 8px;
+}
+.btnSortPrior{
+    background-color: rgb(105, 170, 68);
+    font-size: 16px;
+    padding: 14px 20px;
+    border-radius: 8px;
+}
+.btnSubmit{
+    background-color: rgb(105, 170, 68);
+    font-size: 16px;
+    padding: 7px 30px;
+    margin: 20px;
+    border-radius: 8px;
+}
+.form{
+    border: 5px solid rgb(54, 50, 50);
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    padding-bottom: 0px;
+    border-radius: 10px;
+}
