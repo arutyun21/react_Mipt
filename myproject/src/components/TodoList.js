@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import AddTask from './AddTask';
 import './TodoList.css'
+import { connect } from 'react-redux'
+import { addTask } from '../actions/addTaskAction'
+import { handleSortByName } from '../actions/handleSortByNameAction'
+import { handleSortByPrior } from '../actions/handleSortByPriorAction'
 
 const SortByName = ({onClick}) => {
     return(
@@ -16,6 +20,7 @@ const SortByPrior = ({onClick}) => {
 
 
 class TodoList extends Component {
+    /*
     state = {
         todolist : [
           {id: 1, name: 'forward', description: 'do this thing', priority: 3},
@@ -23,21 +28,25 @@ class TodoList extends Component {
           {id: 3, name: 'Make it', description: 'make great', priority: 2}
         ]
       }
-
+    */
+    /*
     addTask=(task)=>{
         task.id = Math.floor(Math.random() * 999999) + 1;
-        let newTodolist = [...this.state.todolist, task]
+        let newTodolist = [...this.props.todolist, task];
         this.setState({todolist: newTodolist})
     }
-
+    */
+    /*
     handleSortByName = () => {
         this.setState(state => {return{todolist: state.todolist.sort((a,b) => a.name > b.name? 1 : -1)}});
     };
     handleSortByPrior = () => {
         this.setState(state => {return{todolist: state.todolist.sort((a,b) => a.priority > b.priority? 1 : -1)}});
     };
+    */
     render(){
-        const taskList = this.state.todolist.map(task => {
+        console.log(this.props);
+        const taskList = this.props.todolist.map(task => {
             return(
                 <div className="task" key={task.id}>
                     
@@ -56,11 +65,11 @@ class TodoList extends Component {
                     <div className="taskList">{taskList}</div>
                 </div>
                 <div className="btn-sort"> 
-                    <SortByName onClick={this.handleSortByName}/>
-                    <SortByPrior onClick={this.handleSortByPrior}/>
+                    <SortByName onClick={this.props.handleSortByName}/>
+                    <SortByPrior onClick={this.props.handleSortByPrior}/>
                 </div>
                 <div className="addTask">
-                    <AddTask addTask={this.addTask}/>
+                    <AddTask addTask={this.props.addTask}/>
                 </div>
             </div>
             
@@ -68,4 +77,19 @@ class TodoList extends Component {
     }
 }
 
-export default TodoList;
+
+const mapStateToProps = (state) =>{
+    return {
+        todolist: state.todolist
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTask: (task) => { dispatch(addTask(task)) },
+        handleSortByName: () => { dispatch(handleSortByName()) },
+        handleSortByPrior: () => { dispatch(handleSortByPrior()) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

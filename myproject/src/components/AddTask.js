@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 
-
 class AddTask extends Component{
     state ={
-        id: null, 
+        id: 0, 
         name: null, 
         description: null, 
-        priority: null
+        priority: 1
     }
 
     handleChange=(e)=>{
@@ -15,6 +14,7 @@ class AddTask extends Component{
     
     handleSubmit=(e)=>{
         e.preventDefault();
+        this.setState((state) => {return{id: state.id + 1}})
         this.props.addTask(this.state);
     }
     
@@ -41,5 +41,7 @@ class AddTask extends Component{
         )
     }
 }
+
+
 
 export default AddTask;
