@@ -61,7 +61,7 @@ class TodoList extends Component {
 const mapStateToProps = (state, ownProps) =>{
     let id = ownProps.match.params.project_id;
     return {
-        project: state.projects.find(project => project.id == id),
+        project: state.projects.find(project => project.id === id),
         todolist: state.todolist[id]
     }
 }
