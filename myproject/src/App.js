@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import TodoList from './component/TodoList';
-import NavBar from "./component/NavBar"
+import TodoList from './components/TodoList';
+import NavBar from "./components/NavBar"
 
 class App extends Component {
   
@@ -10,7 +10,6 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <TodoList/>
-
       </div>
     );
   }
