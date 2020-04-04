@@ -6,8 +6,9 @@ const NavBar = () =>{
         <nav className="nav-wrapper">
             <div className="container">
                 <a className="textLogo">Project Task Manager</a>
-                <ul classname="nav-buttons">
+                <ul className="nav-buttons">
                     <li><a href="/">Home</a></li>
+                    <li><a href="/projects">Projects</a></li>
                 </ul>
             </div>
         </nav>

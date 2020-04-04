@@ -1,21 +1,21 @@
 import React, {Component} from 'react'
 
 class AddTask extends Component{
-    state ={
+    state = {
         id: 0, 
         name: null, 
         description: null, 
         priority: 1
     }
 
-    handleChange=(e)=>{
+    handleChange = (e) => {
         this.setState({[e.target.id]: e.target.value})
     }
     
-    handleSubmit=(e)=>{
+    handleSubmit = (e) => {
         e.preventDefault();
         this.setState((state) => {return{id: state.id + 1}})
-        this.props.addTask(this.state);
+        this.props.addTask(this.state, this.props.project_id);
     }
     
     render(){
@@ -35,7 +35,7 @@ class AddTask extends Component{
                         <option value="3">3</option>
                     </select>
                     </label>
-                    <button className="btnSubmit"> Submit</button>
+                    <button className="btnSubmit"> Submit Task</button>
                 </form>
             </div>
         )
