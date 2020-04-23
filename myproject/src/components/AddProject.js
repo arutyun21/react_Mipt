@@ -1,20 +1,21 @@
 import React, {Component} from 'react'
+import { postProject } from '../actions/actionsAPI'
 
 class AddProject extends Component{
    state = {
-       id: 0,
-       name: null
+       name: ''
    }
 
    handleChange = (e) => {
         this.setState({[e.target.id]: e.target.value})
     }
 
-   handleSubmit = (e) => {
-       e.preventDefault();
-       this.setState((state) => {return{id: state.id + 1}})
-       this.props.addProject(this.state)
-   }
+    handleSubmit = async (e) => {
+        e.preventDefault();
+        let response = await postProject(this.state.name)
+        console.log("Added Project", response)
+        this.props.addProject(response.payload)
+    }
    render(){
        return(
            <div className="projAddForm">

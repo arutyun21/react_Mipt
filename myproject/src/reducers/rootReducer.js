@@ -16,6 +16,21 @@ const initState = {
 const rootReducer = (state = initState, action) => {
     console.log(action);
     switch (action.type) {
+        case 'GET_PROJECTS': {
+            let newProjects = action.payload;
+            return {
+                ...state,
+                projects: newProjects 
+            }
+        }
+        case 'GET_TASKS': {
+            let newTodolist = action.payload;
+            console.log("GET_TASK_REDUCER", action.payload)
+            return{
+                ...state,
+                todolist:{...state.todolist, [action.project_id]: newTodolist}
+            }
+        }
         case 'ADD_PROJECT': {
             let newProjList = [...state.projects, action.project];
             let newTodolist = {...state.todolist, [action.project.id] : []}

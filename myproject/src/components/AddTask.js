@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import { postTask } from '../actions/actionsAPI'
 class AddTask extends Component{
     state = {
         id: 0, 
@@ -12,10 +12,12 @@ class AddTask extends Component{
         this.setState({[e.target.id]: e.target.value})
     }
     
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
-        this.setState((state) => {return{id: state.id + 1}})
-        this.props.addTask(this.state, this.props.project_id);
+        console.log("PRIORbefore", this.state.priority)
+        let response = await postTask(this.props.project_id, this.state.name, this.state.description, this.state.priority)
+        console.log("PRIORafter", response)
+        this.props.addTask(response.payload, this.props.project_id);
     }
     
     render(){
